@@ -1,0 +1,167 @@
+<?xml version="1.0" ?>
+<robot name="diff_drive" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find diff_drive_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find diff_drive_description)/urdf/diff_drive.trans" />
+<xacro:include filename="$(find diff_drive_description)/gazebo/diff_drive_materials.gazebo" />
+<xacro:include filename="$(find diff_drive_description)/gazebo/diff_drive_physics.gazebo" />
+<xacro:include filename="$(find diff_drive_description)/gazebo/diff_drive_plugins.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-5.217345005836343e-16 2.268410872102757e-17 0.0455266598583738"/>
+    <mass value="0.849990974505991"/>
+    <inertia ixx="0.00133" ixy="0.0" ixz="-0.0" iyy="0.001324" iyz="0.0" izz="0.002198"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.1395061743102379e-17 -7.237528875152537e-18 0.010000000000000078"/>
+    <mass value="0.10602875205865551"/>
+    <inertia ixx="2e-05" ixy="-0.0" ixz="0.0" iyy="2e-05" iyz="0.0" izz="3.3e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.0925"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.0 -0.0925"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="front_caster_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.014999999999999965 1.6674890873458527e-17 -0.009728260869565143"/>
+    <mass value="0.01625774198232718"/>
+    <inertia ixx="1e-06" ixy="-0.0" ixz="-0.0" iyy="1e-06" iyz="0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.075 -0.0 -0.0225"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/front_caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.075 -0.0 -0.0225"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/front_caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="back_caster_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.014999999999999979 6.281738229804094e-19 -0.009728260869565198"/>
+    <mass value="0.016257741982327177"/>
+    <inertia ixx="1e-06" ixy="0.0" ixz="0.0" iyy="1e-06" iyz="-0.0" izz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.075 0.0 -0.0225"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/back_caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.075 0.0 -0.0225"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/back_caster_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.5552070975774192e-15 -0.009999999999999981 -6.938893903907228e-18"/>
+    <mass value="0.06135530452460868"/>
+    <inertia ixx="1.8e-05" ixy="-0.0" ixz="-0.0" iyy="3.3e-05" iyz="-0.0" izz="1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 0.075 -0.0325"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 0.075 -0.0325"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-1.5552070975774192e-15 0.009999999999999981 -6.938893903907228e-18"/>
+    <mass value="0.06135530452460868"/>
+    <inertia ixx="1.8e-05" ixy="0.0" ixz="-0.0" iyy="3.3e-05" iyz="0.0" izz="1.8e-05"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.0 -0.075 -0.0325"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver_default"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.0 -0.075 -0.0325"/>
+    <geometry>
+      <mesh filename="package://diff_drive_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="lidar_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0.0 0.0 0.0925"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+<joint name="front_caster" type="fixed">
+  <origin rpy="0 0 0" xyz="0.075 0.0 0.0225"/>
+  <parent link="base_link"/>
+  <child link="front_caster_1"/>
+</joint>
+
+<joint name="back_caster" type="fixed">
+  <origin rpy="0 0 0" xyz="-0.075 0.0 0.0225"/>
+  <parent link="base_link"/>
+  <child link="back_caster_1"/>
+</joint>
+
+<joint name="motor_right" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 -0.075 0.0325"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="motor_left" type="continuous">
+  <origin rpy="0 0 0" xyz="0.0 0.075 0.0325"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+</robot>
