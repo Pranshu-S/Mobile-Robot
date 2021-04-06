@@ -24,7 +24,7 @@ def move_bot():
     rospy.Subscriber('/odom', Odometry, callback)
     vel = Twist()
     goal = Point()
-    rate = rospy.Rate(1)
+    rate = rospy.Rate(10)
     goal.x = float(input('Enter x - coordinate of goal: '))
     goal.y = float(input('Enter y - coordinate of goal: '))
     while not rospy.is_shutdown():
