@@ -17,7 +17,7 @@ def callback(data):
 
 def move_bot():
     global x, y, theta
-    k_linear = 0.25
+    #k_linear = 0.25
     k_angular = 1.0
     rospy.init_node('go_to_goal', anonymous=True)
     pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
@@ -27,18 +27,21 @@ def move_bot():
     rate = rospy.Rate(10)
     goal.x = float(input('Enter x - coordinate of goal: '))
     goal.y = float(input('Enter y - coordinate of goal: '))
-    while not rospy.is_shutdown():
+    while sqrt((goal.x - x)**2 + (goal.y - y)**2) > 0.1:
         e_y = goal.y - y
         e_x = goal.x - x
-        e_linear = sqrt(e_x**2 + e_y**2)
+        #e_linear = sqrt(e_x**2 + e_y**2)
         theta_desired = atan2(e_y,e_x)
         e_theta = theta_desired - theta
         e_theta = atan2(sin(e_theta),cos(e_theta))
         vel.angular.z = k_angular*e_theta
-        vel.linear.x = k_linear*e_linear
+        vel.linear.x = cos(theta)
+        vel.linear.y = sin(theta)
+        #vel.linear.x = k_linear*e_linear
         pub.publish(vel)
         rate.sleep()
     vel.linear.x = 0.0
+    vel.angular.y = 0.0
     vel.angular.z  = 0.0
     pub.publish(vel)
 

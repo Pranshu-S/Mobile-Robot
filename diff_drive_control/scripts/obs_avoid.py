@@ -26,6 +26,7 @@ def odom_callback(data):
     pose = [x, y, theta]
 
 def laser_callback(data):
+    global regions
     regions = {
             'right':  min(min(data.ranges[0:143]), 10),
             'fright': min(min(data.ranges[144:287]), 10),
@@ -33,6 +34,8 @@ def laser_callback(data):
             'fleft':  min(min(data.ranges[432:575]), 10),
             'left':   min(min(data.ranges[576:713]), 10),
         }
+    
+
 
 def controller():
     rospy.init_node('obstacle_avoidance')
