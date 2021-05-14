@@ -3,7 +3,7 @@
 #include<geometry_msgs/Twist.h>
 #include<geometry_msgs/Point.h>
 #include<nav_msgs/Odometry.h>
-#include <tf/tf.h>
+#include<tf/tf.h>
 #include<math.h>
 
 double x, y, theta;
@@ -12,8 +12,8 @@ void callback(const nav_msgs::Odometry::ConstPtr& msg)
 {
     double roll, pitch;
     tf::Quaternion q(msg->pose.pose.orientation.x, msg->pose.pose.orientation.y, msg->pose.pose.orientation.z, msg->pose.pose.orientation.w);
-    tf::Matrix3x3 m(q);
-    m.getRPY(roll, pitch, theta);
+    tf::Matrix3x3 matrix(q);
+    matrix.getRPY(roll, pitch, theta);
     x = msg->pose.pose.position.x;
     y = msg->pose.pose.position.y;
 }

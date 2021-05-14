@@ -136,7 +136,11 @@ include_directories(
 ## Declare a C++ executable
 add_executable(go_to_goal src/go_to_goal.cpp)
 target_link_libraries(go_to_goal ${catkin_LIBRARIES})
-## With catkin_make all packages are built within a single CMake context
+add_executable(circle src/circle.cpp)
+target_link_libraries(circle ${catkin_LIBRARIES})
+add_executable(spiral src/spiral.cpp)
+target_link_libraries(spiral ${catkin_LIBRARIES})
+# With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/diff_drive_control_node.cpp)
 
