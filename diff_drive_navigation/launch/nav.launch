@@ -1,0 +1,9 @@
+<launch>
+
+    <arg name="map_file" default="$(find diff_drive_navigation)/maps/envision_map.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+    <!-- including launch file for localization using AMCL -->
+    <include file="$(find diff_drive_navigation)/launch/amcl.launch" />
+
+</launch>
